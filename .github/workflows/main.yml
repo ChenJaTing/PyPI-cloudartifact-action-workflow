@@ -19,6 +19,7 @@ jobs:
           pip install twine
           mkdir -p ~/.pip
           mv pip.conf ~/.pip/pip.conf
+          pip install demo==1.0
 #         twine --version
 #         mv .pypirc  ~/.pypirc
 #         cat ~/.pypirc
