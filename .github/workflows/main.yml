@@ -22,3 +22,4 @@ jobs:
           cat ~/.pypirc
           python setup.py bdist_wheel bdist_egg  sdist
           ls -al dist/
+          twine upload -r pypi dist/*
