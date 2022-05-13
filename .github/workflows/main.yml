@@ -17,6 +17,7 @@ jobs:
           python --version
           pip --version
           pip install twine
+          mkdir -p ~/.pip
           mv pip.conf ~/.pip/pip.conf
 #         twine --version
 #         mv .pypirc  ~/.pypirc
