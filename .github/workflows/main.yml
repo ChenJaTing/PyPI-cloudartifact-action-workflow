@@ -18,3 +18,5 @@ jobs:
           pip --version
           pip install twine
           twine --version
+          mv .pypirc  ~/.pypirc
+          cat ~/.pypirc
