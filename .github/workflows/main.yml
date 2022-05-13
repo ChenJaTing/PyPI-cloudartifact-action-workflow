@@ -2,7 +2,7 @@ name: PyPI CloudArtifact Action Demo
 
 on:
   push:
-    branches: [ master1 ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -17,9 +17,10 @@ jobs:
           python --version
           pip --version
           pip install twine
-          twine --version
-          mv .pypirc  ~/.pypirc
-          cat ~/.pypirc
-          python setup.py bdist_wheel bdist_egg  sdist
-          ls -al dist/
-          twine upload -r pypi dist/*
+          mv pip.conf ~/.pip/pip.conf
+#         twine --version
+#         mv .pypirc  ~/.pypirc
+#         cat ~/.pypirc
+#         python setup.py bdist_wheel bdist_egg  sdist
+#         ls -al dist/
+#         twine upload -r pypi dist/*
