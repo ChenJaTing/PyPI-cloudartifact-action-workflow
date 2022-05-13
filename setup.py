@@ -9,4 +9,4 @@ from setuptools import setup
 # author：作者
 # author_email：作者邮箱
 # packages：包
-setup(name='demo', version='1.0', description='This is a test of the setup', author='test', author_email='test@163.com', packages=['demo'],)
+setup(name='demo1', version='1.0', description='This is a test of the setup', author='test', author_email='test@163.com', packages=['demo'],)
