@@ -20,5 +20,5 @@ jobs:
           twine --version
           mv .pypirc  ~/.pypirc
           cat ~/.pypirc
-          python -m build
+          python setup.py bdist_wheel bdist_egg  sdist
           ls -al dist/
