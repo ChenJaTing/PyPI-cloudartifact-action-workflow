@@ -14,6 +14,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+            setuptools --version
+            wheel --version
             python setup.py sdist bdist_wheel
             ls -al
 
