@@ -29,8 +29,9 @@ jobs:
       - name: Packaged Our Libraries/Projects
         run: |
           python -m build
+          ls -al
             
         # 使用twine将打包好的库/项目上传到华为云CloudArtifact PyPI 私仓
       - name: Publish PyPI package 
         run: |
-          twine upload -r pypi dist/*
+          twine upload -r pypi dist/* --verbose
