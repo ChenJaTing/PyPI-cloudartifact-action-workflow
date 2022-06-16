@@ -1,38 +1,36 @@
-name: PyPI CloudArtifact Action Demo
-
+name: PyPI Cloudartifact Action Publish Demo
 on:
   push:
-    branches: [ master ]
-
+    branches:
+       master
 jobs:
-  build:
+  Publish-to-CloudArtifact-PyPI:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+        # 代码检出
+      - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+        # GitHub Action环境默认python版本为3.8.X，可以根据自己项目需求修改python版本
+      - name: Setup node
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+        # 华为云CloudArtifact PyPI 私仓配置 
+      - name: Setup HuaweiCloud PyPI CloudArtifact
+        uses: huaweicloud/PyPI-cloudartifact-action@v1.0.0
+        with: 
+          pypi-operation-type: upload
+          repository: https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/pypi/cn-north-4_dfbdbf2e511e40fa88ba1d653358d65c_pypi_0
+          username: ${{ secrets.PyPI_USERNAME }}
+          password: ${{ secrets.PyPI_PASSWORD }}
+
+        # 打包的我们的库/项目
+      - name: Packaged Our Libraries/Projects
         run: |
-            pip install --upgrade build
-            python -m build
-            ls -al
-
-
-#             python -m pip install --upgrade build
-#             python -m build
-#             ls -al
-# #           python3 --version
-#           python --version
-#           pip --version
-#           pip3 --version
-#           pip install twine
-#           mkdir -p ~/.pip
-#           mv pip.conf ~/.pip/pip.conf
-#           pip install demo==1.0
-#         twine --version
-#         mv .pypirc  ~/.pypirc
-#         cat ~/.pypirc
-#         python setup.py bdist_wheel bdist_egg  sdist
-#         ls -al dist/
-#         twine upload -r pypi dist/*
+          python -m build
+            
+        # 使用twine将打包好的库/项目上传到华为云CloudArtifact PyPI 私仓
+      - name: Publish PyPI package 
+        run: |
+          twine upload -r pypi dist/*
